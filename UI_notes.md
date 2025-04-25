@@ -35,6 +35,7 @@ simulation_modes_button['theme'] = None                             # dict with 
 simulation_modes_button['z_order'] = 0                              # draw order priority
 simulation_modes_button['hotkey'] = None                            # keybinding (e.g., pygame.K_m)
 simulation_modes_button['interaction_rect_override'] = None         # manually override clickable area
+simulation_modes_button['button_style'] = "primary"                # select the button display from a group of styles (e.g. rounded corners, bold outlines, etc)
 ```
 
 buttons['simulation_modes_button'] = simulation_modes_button

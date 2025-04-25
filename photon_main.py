@@ -35,5 +35,8 @@ while running:
 	# draw UI borders
 	pui.draw_ui_borders(screen, pui.pygame_window_width, pui.pygame_window_height)
 
+	# draw buttons:
+	pui.draw_example_button(screen, 0, 0, 100, 50, "Example Button") # Example button
+
 	# redraw the window, this must be the last line
 	pygame.display.flip() 							# redraw pygame window - this must be the last line

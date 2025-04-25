@@ -1,4 +1,11 @@
 #******************************************************************************************************
+# import modules     **********************************************************************************
+#******************************************************************************************************
+
+import pygame
+
+
+#******************************************************************************************************
 # Customization Area **********************************************************************************
 #******************************************************************************************************
 # This section contains all customizable settings for the UI. Modify these values as needed.
@@ -23,6 +30,15 @@ UI_background_color = (102, 0, 51)
 UI_button_border_color = (153, 0, 76)
 UI_button_color = (204, 0, 102)
 UI_button_click_color = (255, 0, 127)
+UI_button_text_color = (255, 255, 0)  # yellow
+
+# yellow RGB color
+# yellow = (255, 255, 0)
+# red = (255, 0, 0)
+# green = (0, 255, 0)   
+# blue = (0, 0, 255)
+# darkBlue = (0, 0, 128)    
+# white = (255, 255, 255)
 
 # UI Dimensions
 UI_topBar_height = 24
@@ -31,14 +47,19 @@ UI_sideBar_left_width = 124
 UI_sideBar_right_width = 24
 
 # Fonts
-font_name = "Arial"
-font_size = 15
+#font_name = "Arial"
+#font_size = 15
+
+pygame.font.init() 						    		# you have to call this at the start to use this module.
+FontButton = pygame.font.SysFont('Arial', 15)		# sets font type and size
+
 
 #******************************************************************************************************
 # UI Logic and Drawing Functions **********************************************************************
 #******************************************************************************************************
 
-import pygame
+
+
 
 def draw_ui_background(screen, window_width, window_height):
     """Draws the UI background elements."""
@@ -67,3 +88,32 @@ def draw_ui_borders(screen, window_width, window_height):
     pygame.draw.rect(screen, UI_button_border_color, (0, 0, UI_sideBar_left_width, window_height), 1)  # Left sidebar border
     pygame.draw.rect(screen, UI_button_border_color, (window_width - UI_sideBar_right_width, 0, UI_sideBar_right_width, window_height), 1)  # Right sidebar border
     pygame.draw.rect(screen, UI_button_border_color, (0, window_height - UI_bottomBar_height, window_width, UI_bottomBar_height), 1)  # Bottom bar border
+
+
+
+#******************************************************************************************************
+# Define an indivudual button    **********************************************************************
+#******************************************************************************************************
+
+"""
+pygame.Rect(x, y, width, height, 1)
+    x, y: The top-left corner of the rectangle.
+    width, height: The dimensions of the rectangle.
+    The rectangle is drawn from the top-left corner (x, y) to the bottom-right corner (x + width, y + height).
+"""
+
+
+def draw_example_button(screen, x, y, width, height, text):
+
+    # draw background of button
+    pygame.draw.rect(screen, UI_button_color, (0, UI_topBar_height, UI_sideBar_left_width, 20))  # Button background
+
+    # draw outline of button
+    pygame.draw.rect(screen, UI_button_border_color, (0, UI_topBar_height, UI_sideBar_left_width, 20), 3)  # Button border
+
+    # draw text on button
+    text_surface = FontButton.render(text, True, (UI_button_text_color))            # Render the text surface
+    text_rect = text_surface.get_rect(center=(UI_sideBar_left_width / 2, UI_topBar_height + 10))     # Center the text within the button
+
+
+    screen.blit(text_surface, text_rect)                                            # Draw the text
