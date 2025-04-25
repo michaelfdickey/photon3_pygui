@@ -135,8 +135,10 @@ def draw_buttons(screen, buttons):
         font = button.get('font') or FontButton  # Default to FontButton if font is None
         text_align = button.get('textAlign', 'center')  # Default to center alignment
 
-        # Determine button color based on status
+        # Determine button color based on type and state
         if button['type'] == 'sticky' and button['status'] == 'selected':
+            button_color = UI_button_click_color
+        elif button['type'] == 'pushy' and button.get('pressed', False):
             button_color = UI_button_click_color
         else:
             button_color = UI_button_color
@@ -172,9 +174,9 @@ def handle_mouse_events(event, buttons, window_width, window_height):
         window_width: Width of the window.
         window_height: Height of the window.
     """
-    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse button
-        mouse_pos = pygame.mouse.get_pos()
+    mouse_pos = pygame.mouse.get_pos()
 
+    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse button pressed
         # Check if the click is within a UI bar
         region = get_ui_bar_region(mouse_pos, window_width, window_height)
         if region:
@@ -185,6 +187,10 @@ def handle_mouse_events(event, buttons, window_width, window_height):
                 button_rect = pygame.Rect(button['origin'][0], button['origin'][1], button['width'], button['height'])
                 if button_rect.collidepoint(mouse_pos):
                     print(f"Button '{button_name}' clicked!")
+
+                    # Handle "pushy" button behavior
+                    if button['type'] == 'pushy':
+                        button['pressed'] = True  # Set the button as pressed
 
                     # Handle "sticky" button behavior
                     if button['type'] == 'sticky':
@@ -197,8 +203,12 @@ def handle_mouse_events(event, buttons, window_width, window_height):
                     if button['callback']:
                         button['callback']()
                     return
-        else:
-            print(f"Mouse clicked outside UI bars at {mouse_pos}")
+
+    elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:  # Left mouse button released
+        # Reset "pushy" buttons
+        for button_name, button in buttons.items():
+            if button['type'] == 'pushy':
+                button['pressed'] = False  # Reset the button's pressed state
 
 
 def get_ui_bar_region(mouse_pos, window_width, window_height):

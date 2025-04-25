@@ -170,7 +170,39 @@ button_sticky_1['z_order'] = 0                                     # Draw order 
 button_sticky_1['hotkey'] = None                                   # Keybinding (e.g., pygame.K_m)
 button_sticky_1['interaction_rect_override'] = None                # Override clickable area
 button_sticky_1['button_style'] = "primary"                        # Button style (e.g., rounded corners)
-
 # Add the button to the sidebar group
 buttons_sidebar['button_sticky_1'] = button_sticky_1
+
+
+
+# Pushy button 1
+button_pushy_1 = {}
+button_pushy_1['name'] = "button_pushy_1"
+button_pushy_1['origin'] = (0, 130)                                # Position (adjusted if needed)
+button_pushy_1['width'] = pui.UI_sideBar_left_width               # Width of the button
+button_pushy_1['height'] = 20
+button_pushy_1['font'] = None                                     # Use default font
+button_pushy_1['textAlign'] = 'center'                            # Text alignment: left, center, right
+button_pushy_1['label'] = "Pushy Button 1"
+button_pushy_1['type'] = 'pushy'                                  # Button type: pushy, sticky, selector, etc.
+button_pushy_1['status'] = 'unselected'                           # Button state
+button_pushy_1['active'] = True                                   # Button is active and clickable
+button_pushy_1['enabled'] = True                                  # Button is enabled meaning it can be clicked
+button_pushy_1['display'] = True                                  # Button is visible
+button_pushy_1['master_group'] = None                             # Parent group, if any
+button_pushy_1['peer_group'] = 'sidebar'                          # Group of mutually exclusive buttons
+button_pushy_1['child_group'] = None                              # Group activated by this button
+button_pushy_1['tooltip'] = None                                  # Tooltip text (optional)
+button_pushy_1['callback'] = None                                 # Function to call on click
+button_pushy_1['hovered'] = False                                 # True when mouse is over the button
+button_pushy_1['pressed'] = False                                 # True when mouse button is held down
+button_pushy_1['toggle_state'] = False                            # For toggles: True if toggled on
+button_pushy_1['icon'] = None                                     # Optional image/icon
+button_pushy_1['theme'] = None                                    # Dict with color/styling overrides
+button_pushy_1['z_order'] = 0                                     # Draw order priority
+button_pushy_1['hotkey'] = None                                   # Keybinding (e.g., pygame.K_m)
+button_pushy_1['interaction_rect_override'] = None                # Override clickable area
+button_pushy_1['button_style'] = "primary"                        # Button style (e.g., rounded corners)
+# Add the button to the sidebar group
+buttons_sidebar['button_pushy_1'] = button_pushy_1
 
