@@ -107,7 +107,6 @@ dictionary_button['z_order'] = 0                                    # Draw order
 dictionary_button['hotkey'] = None                                  # Keybinding (e.g., pygame.K_m)
 dictionary_button['interaction_rect_override'] = None               # Override clickable area
 dictionary_button['button_style'] = "primary"                       # Button style (e.g., rounded corners)
-
 # Add the button to the sidebar group
 buttons_sidebar['dictionary_button'] = dictionary_button
 
@@ -120,7 +119,7 @@ dictionary_2_button['height'] = 20
 dictionary_2_button['font'] = None                                    # Use default font
 dictionary_2_button['textAlign'] = 'center'                           # Text alignment: left, center, right
 dictionary_2_button['label'] = "Dictionary Button 2"
-dictionary_2_button['type'] = 'stickys'                               # Button type: pushy, sticky, selector, etc.
+dictionary_2_button['type'] = 'sticky'                               # Button type: pushy, sticky, selector, etc.
 dictionary_2_button['status'] = 'unselected'                          # Button state
 dictionary_2_button['active'] = True                                  # Button is active and clickable
 dictionary_2_button['enabled'] = True                                 # Button is enabled meaning it can be clicked
@@ -139,8 +138,39 @@ dictionary_2_button['z_order'] = 0                                    # Draw ord
 dictionary_2_button['hotkey'] = None                                  # Keybinding (e.g., pygame.K_m)
 dictionary_2_button['interaction_rect_override'] = None               # Override clickable area
 dictionary_2_button['button_style'] = "primary"                       # Button style (e.g., rounded corners)
-
 # Add the button to the sidebar group
 buttons_sidebar['dictionary_2_button'] = dictionary_2_button
 
+
+# Sticky button 1
+button_sticky_1 = {}
+button_sticky_1['name'] = "button_sticky_1"
+button_sticky_1['origin'] = (0, 110)                                # Position below the "Example Button"
+button_sticky_1['width'] = pui.UI_sideBar_left_width               # Width of the button
+button_sticky_1['height'] = 20
+button_sticky_1['font'] = None                                     # Use default font
+button_sticky_1['textAlign'] = 'center'                            # Text alignment: left, center, right
+button_sticky_1['label'] = "Sticky Button 1"
+button_sticky_1['type'] = 'sticky'                                 # Button type: pushy, sticky, selector, etc.
+button_sticky_1['status'] = 'unselected'                           # Button state
+button_sticky_1['active'] = True                                   # Button is active and clickable
+button_sticky_1['enabled'] = True                                  # Button is enabled meaning it can be clicked
+button_sticky_1['display'] = True                                  # Button is visible
+button_sticky_1['master_group'] = None                             # Parent group, if any
+button_sticky_1['peer_group'] = 'sidebar'                          # Group of mutually exclusive buttons
+button_sticky_1['child_group'] = None                              # Group activated by this button
+button_sticky_1['tooltip'] = None                                  # Tooltip text (optional)
+button_sticky_1['callback'] = None                                 # Function to call on click
+button_sticky_1['hovered'] = False                                 # True when mouse is over the button
+button_sticky_1['pressed'] = False                                 # True when mouse button is held down
+button_sticky_1['toggle_state'] = False                            # For toggles: True if toggled on
+button_sticky_1['icon'] = None                                     # Optional image/icon
+button_sticky_1['theme'] = None                                    # Dict with color/styling overrides
+button_sticky_1['z_order'] = 0                                     # Draw order priority
+button_sticky_1['hotkey'] = None                                   # Keybinding (e.g., pygame.K_m)
+button_sticky_1['interaction_rect_override'] = None                # Override clickable area
+button_sticky_1['button_style'] = "primary"                        # Button style (e.g., rounded corners)
+
+# Add the button to the sidebar group
+buttons_sidebar['button_sticky_1'] = button_sticky_1
 

@@ -28,8 +28,8 @@ width = pygame_window_width
 background_color = (0, 0, 0)
 UI_background_color = (102, 0, 51)
 UI_button_border_color = (153, 0, 76)
-UI_button_color = (204, 0, 102)
-UI_button_click_color = (255, 0, 127)
+UI_button_color = (185, 0, 85)
+UI_button_click_color = (255, 30, 167)
 UI_button_text_color = (255, 255, 0)  # yellow
 
 # yellow RGB color
@@ -135,8 +135,14 @@ def draw_buttons(screen, buttons):
         font = button.get('font') or FontButton  # Default to FontButton if font is None
         text_align = button.get('textAlign', 'center')  # Default to center alignment
 
+        # Determine button color based on status
+        if button['type'] == 'sticky' and button['status'] == 'selected':
+            button_color = UI_button_click_color
+        else:
+            button_color = UI_button_color
+
         # Draw button background
-        pygame.draw.rect(screen, UI_button_color, (x, y, width, height))
+        pygame.draw.rect(screen, button_color, (x, y, width, height))
 
         # Draw button border
         pygame.draw.rect(screen, UI_button_border_color, (x, y, width, height), 2)
@@ -179,8 +185,17 @@ def handle_mouse_events(event, buttons, window_width, window_height):
                 button_rect = pygame.Rect(button['origin'][0], button['origin'][1], button['width'], button['height'])
                 if button_rect.collidepoint(mouse_pos):
                     print(f"Button '{button_name}' clicked!")
+
+                    # Handle "sticky" button behavior
+                    if button['type'] == 'sticky':
+                        if button['status'] == 'unselected':
+                            button['status'] = 'selected'
+                        else:
+                            button['status'] = 'unselected'
+
+                    # Call the button's callback function if it exists
                     if button['callback']:
-                        button['callback']()  # Call the button's callback function
+                        button['callback']()
                     return
         else:
             print(f"Mouse clicked outside UI bars at {mouse_pos}")
