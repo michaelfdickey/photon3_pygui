@@ -50,3 +50,26 @@ Button Types:
 - menu - opens a menu of elements right next to it
 - dialog - opens a window of elements in the screen center (or pre-defined location)
 - cycle - with each click, it cycles through a list of options
+
+
+## Interface Formats
+
+### Classic Vertical Sidebar + Top Bar (default)
+
+Sidebar: Tool-specific controls (left or right)
+Top bar: Mode/category buttons (change sidebar contents)
+Content area: Full screen for canvas/simulation
+Used in: CAD, LightWave, old-school Photoshop, etc.
+
+### Ribbon Interface (MS Office / SolidWorks style)
+
+Top ribbon: Tabbed categories with wide button/tool sections
+Mini sidebar: Optional for context or properties
+Content area: Main interactive zone
+
+### Used in: SolidWorks, AutoCAD modern UI, Office, Visual Studio
+
+Panel Docking / Resizable Panes
+Dockable windows/panels: Users can drag & resize panels (properties, log, file browser, etc.)
+Main viewport: Stays center or fills space dynamically
+Used in: Blender, Unity, Unreal Editor, Qt Creator
