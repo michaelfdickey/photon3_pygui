@@ -7,6 +7,7 @@
 BUTTON TERMINOLOGY GUIDE:
 
 example:
+```
 ## Simulation Modes button
 simulation_modes_button = {}
 simulation_modes_button['name'] = "simulation_modes_button"
@@ -25,8 +26,6 @@ simulation_modes_button['master_group'] = None                      # the group 
 simulation_modes_button['peer_group'] = 'main'                      # group of mutually exclusive buttons (e.g., radio group)
 simulation_modes_button['child_group'] = 'simulation_modes'         # the group this button activates
 simulation_modes_button['tooltip'] = SimulationHelp                 # hover-over content
-
-# New attributes
 simulation_modes_button['callback'] = None                          # function to call on click
 simulation_modes_button['hovered'] = False                          # True when mouse is over
 simulation_modes_button['pressed'] = False                          # True when mouse button is held down
@@ -36,23 +35,18 @@ simulation_modes_button['theme'] = None                             # dict with 
 simulation_modes_button['z_order'] = 0                              # draw order priority
 simulation_modes_button['hotkey'] = None                            # keybinding (e.g., pygame.K_m)
 simulation_modes_button['interaction_rect_override'] = None         # manually override clickable area
+```
 
 buttons['simulation_modes_button'] = simulation_modes_button
 
-pushy - a temporary on button, only active while pushed
-sticky - a toggle button, stays on until turned off
-selector - a button that opens a selector menu
-label - a label that is not a button
-indicator - a label the displays a currently selected value, usually chosen from a selector
-
 Button Types:
-pushy - a button that activates only while being pressed, releases with mouse click release
-sticky - a button that stays activated when clicked, until clicked again
-Radio Button - a button that is part of a group where only one can be active at a time
-label - a passive text label that can not be interacted with
-indicator - a passive label that can change state
-icon - rendered as a graphical icon instead of text
-repeat - sends repeated activate events if held (like scrolling)
-menu - opens a menu of elements right next to it
-dialog - opens a window of elements in the screen center (or pre-defined location)
-cycle - with each click, it cycles through a list of options
+- pushy - a button that activates only while being pressed, releases with mouse click release
+- sticky - a button that stays activated when clicked, until clicked again
+- Radio Button - a button that is part of a group where only one can be active at a time
+- label - a passive text label that can not be interacted with
+- indicator - a passive label that can change state
+- icon - rendered as a graphical icon instead of text
+- repeat - sends repeated activate events if held (like scrolling)
+- menu - opens a menu of elements right next to it
+- dialog - opens a window of elements in the screen center (or pre-defined location)
+- cycle - with each click, it cycles through a list of options
