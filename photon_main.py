@@ -4,45 +4,9 @@
 # Import Modules **************************************************************************************
 #******************************************************************************************************
 import pygame  						 # you need to install pygame from https://github.com/pygame/pygame
-#import p_customizations				 # where all your custom configurations for the UI go
+#import p_customizations			 # where all your custom configurations for the UI go
 import photon_ui as pui # Import the new UI module
 
-
-#******************************************************************************************************
-# interface config variables **************************************************************************
-#******************************************************************************************************
-
-"""
-## window size, don't change these here, change in p_customizations.py
-pygame_window_width = p_customizations.pygame_window_width
-pygame_window_height = p_customizations.pygame_window_height
-
-## fonts
-pygame.font.init() 								# you have to call this at the start to use this module.
-myfont = pygame.font.SysFont('Arial', 15)		# sets font type and size
-
-##interface colors
-background_color = (0,0,0)
-UI_background_color = (102, 0, 51)
-UI_button_border_color = (153, 0, 76)
-UI_button_color = (204, 0, 102)
-UI_button_click_color = (255, 0, 127)
-
-## regular colors
-red = (255,0,0)
-green = (0,255,0)
-blue = (0,0,255)
-darkBlue = (0,0,128)
-white = (255,255,255)
-black = (0,0,0)
-pink = (255,200,200)
-
-## UI bar thickness
-UI_topBar_height = 24
-UI_bottomBar_height = 24
-UI_sideBar_left_width = 124
-UI_sideBar_right_width = 24 
-"""
 
 
 #*****************************************************************************************************
