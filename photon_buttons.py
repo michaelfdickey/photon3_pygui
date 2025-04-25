@@ -206,3 +206,34 @@ button_pushy_1['button_style'] = "primary"                        # Button style
 # Add the button to the sidebar group
 buttons_sidebar['button_pushy_1'] = button_pushy_1
 
+
+# Sticky button 2
+button_sticky_2 = {}
+button_sticky_2['name'] = "button_sticky_2"
+button_sticky_2['origin'] = (0, 170)                              # Position (adjusted below sticky_1)
+button_sticky_2['width'] = pui.UI_sideBar_left_width               # Width of the button
+button_sticky_2['height'] = 20
+button_sticky_2['font'] = None                                     # Use default font
+button_sticky_2['textAlign'] = 'left'                               # Text alignment: left, center, right
+button_sticky_2['label'] = "Sticky Button 2"
+button_sticky_2['type'] = 'sticky'                                 # Button type: pushy, sticky, selector, etc.
+button_sticky_2['status'] = 'unselected'                           # Button state
+button_sticky_2['active'] = True                                   # Button is active and clickable
+button_sticky_2['enabled'] = True                                  # Button is enabled meaning it can be clicked
+button_sticky_2['display'] = True                                  # Button is visible
+button_sticky_2['master_group'] = None                             # Parent group, if any
+button_sticky_2['peer_group'] = 'sidebar'                          # Group of mutually exclusive buttons
+button_sticky_2['child_group'] = None                              # Group activated by this button
+button_sticky_2['tooltip'] = None                                  # Tooltip text (optional)
+button_sticky_2['callback'] = None                                 # Function to call on click
+button_sticky_2['hovered'] = False                                 # True when mouse is over the button
+button_sticky_2['pressed'] = False                                 # True when mouse button is held down
+button_sticky_2['toggle_state'] = False                            # For toggles: True if toggled on
+button_sticky_2['icon'] = None                                     # Optional image/icon
+button_sticky_2['theme'] = None                                    # Dict with color/styling overrides
+button_sticky_2['z_order'] = 0                                     # Draw order priority
+button_sticky_2['hotkey'] = None                                   # Keybinding (e.g., pygame.K_m)
+button_sticky_2['interaction_rect_override'] = None                # Override clickable area
+button_sticky_2['button_style'] = "primary"                        # Button style (e.g., rounded corners)
+# Add the button to the sidebar group
+buttons_sidebar['button_sticky_2'] = button_sticky_2
