@@ -117,3 +117,18 @@ def draw_example_button(screen, x, y, width, height, text):
 
 
     screen.blit(text_surface, text_rect)                                            # Draw the text
+
+
+def handle_mouse_events(event):
+    """
+    Handles mouse events and prints information about them.
+
+    Args:
+        event: The Pygame event object.
+    """
+    if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse button
+        print(f"Left mouse button clicked at {pygame.mouse.get_pos()}")
+    elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:  # Left mouse button released
+        print(f"Left mouse button released at {pygame.mouse.get_pos()}")
+    elif event.type == pygame.MOUSEMOTION:  # Mouse movement
+        print(f"Mouse moved to {pygame.mouse.get_pos()}")
