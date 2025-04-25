@@ -5,6 +5,20 @@
 import photon_ui as pui  # Import the UI module
 
 
+"""
+button types
+pushy           - a button that activates only while being pressed, releases with mouse click release
+sticky          - a button that stays activated when clicked, until clicked again
+Radio Button    - a button that is part of a group where only one can be active at a time
+label           - a passive text label that can not be interacted with
+indicator       - a passive label that can change state
+icon            - rendered as a graphical icon instead of text
+repeat          - sends repeated activate events if held (like scrolling)
+menu            - opens a menu of elements right next to it
+dialog          - opens a window of elements in the screen center (or pre-defined location)
+cycle           - with each click, it cycles through a list of options
+"""
+
 
 """
 ## Simulation Modes button
@@ -68,8 +82,8 @@ buttons_bottombar = {}  # Dictionary to hold bottom bar buttons
 # first dictionary button
 dictionary_button = {}
 dictionary_button['name'] = "dictionary_button"
-dictionary_button['origin'] = (0, 100)                               # Position below the "Example Button"
-dictionary_button['width'] = pui.UI_sideBar_left_width                   # Width of the button
+dictionary_button['origin'] = (0, 70)                               # Position below the "Example Button"
+dictionary_button['width'] = pui.UI_sideBar_left_width               # Width of the button
 dictionary_button['height'] = 20
 dictionary_button['font'] = None                                    # Use default font
 dictionary_button['textAlign'] = 'center'                           # Text alignment: left, center, right
@@ -96,3 +110,37 @@ dictionary_button['button_style'] = "primary"                       # Button sty
 
 # Add the button to the sidebar group
 buttons_sidebar['dictionary_button'] = dictionary_button
+
+# 2nd dictionary button
+dictionary_2_button = {}
+dictionary_2_button['name'] = "dictionary_2_button"
+dictionary_2_button['origin'] = (0, 90)                               # Position below the "Example Button"
+dictionary_2_button['width'] = pui.UI_sideBar_left_width               # Width of the button
+dictionary_2_button['height'] = 20
+dictionary_2_button['font'] = None                                    # Use default font
+dictionary_2_button['textAlign'] = 'center'                           # Text alignment: left, center, right
+dictionary_2_button['label'] = "Dictionary Button 2"
+dictionary_2_button['type'] = 'stickys'                               # Button type: pushy, sticky, selector, etc.
+dictionary_2_button['status'] = 'unselected'                          # Button state
+dictionary_2_button['active'] = True                                  # Button is active and clickable
+dictionary_2_button['enabled'] = True                                 # Button is enabled meaning it can be clicked
+dictionary_2_button['display'] = True                                 # Button is visible
+dictionary_2_button['master_group'] = None                            # Parent group, if any
+dictionary_2_button['peer_group'] = 'sidebar'                         # Group of mutually exclusive buttons
+dictionary_2_button['child_group'] = None                             # Group activated by this button
+dictionary_2_button['tooltip'] = None                                 # Tooltip text (optional)
+dictionary_2_button['callback'] = None                                # Function to call on click
+dictionary_2_button['hovered'] = False                                # True when mouse is over the button
+dictionary_2_button['pressed'] = False                                # True when mouse button is held down
+dictionary_2_button['toggle_state'] = False                           # For toggles: True if toggled on
+dictionary_2_button['icon'] = None                                    # Optional image/icon
+dictionary_2_button['theme'] = None                                   # Dict with color/styling overrides
+dictionary_2_button['z_order'] = 0                                    # Draw order priority
+dictionary_2_button['hotkey'] = None                                  # Keybinding (e.g., pygame.K_m)
+dictionary_2_button['interaction_rect_override'] = None               # Override clickable area
+dictionary_2_button['button_style'] = "primary"                       # Button style (e.g., rounded corners)
+
+# Add the button to the sidebar group
+buttons_sidebar['dictionary_2_button'] = dictionary_2_button
+
+

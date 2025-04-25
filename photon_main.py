@@ -27,21 +27,24 @@ while running:
             running = False
 
         # Handle mouse events
-        pui.handle_mouse_events(event)
+        #pui.handle_mouse_events(event)
+        pui.handle_mouse_events(event, pb.buttons_sidebar, pui.pygame_window_width, pui.pygame_window_height)
+
 
     # Draw UI background 
     pui.draw_ui_background(screen, pui.pygame_window_width, pui.pygame_window_height)
 
+    # Draw foreground elements
+    pui.draw_game_elements(screen)
+
 	# Draw UI borders
     pui.draw_ui_borders(screen, pui.pygame_window_width, pui.pygame_window_height)
-
 
 	# draw buttons:
     pui.draw_example_button(screen, 0, 0, 100, 50, "Example Button") # Example button
 
     #Draw buttons from the sidebar
     pui.draw_buttons(screen, pb.buttons_sidebar)
-
 
     # Redraw the window, this must be the last line
     pygame.display.flip() 							# redraw pygame window - this must be the last line

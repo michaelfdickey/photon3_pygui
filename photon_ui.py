@@ -156,16 +156,56 @@ def draw_buttons(screen, buttons):
         screen.blit(text_surface, text_rect)
 
 
-def handle_mouse_events(event):
+def handle_mouse_events(event, buttons, window_width, window_height):
     """
-    Handles mouse events and prints information about them.
+    Handles mouse events and checks for button interactions.
 
     Args:
         event: The Pygame event object.
+        buttons: A dictionary of buttons to check for interactions.
+        window_width: Width of the window.
+        window_height: Height of the window.
     """
     if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # Left mouse button
-        print(f"Left mouse button clicked at {pygame.mouse.get_pos()}")
-    elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:  # Left mouse button released
-        print(f"Left mouse button released at {pygame.mouse.get_pos()}")
-    elif event.type == pygame.MOUSEMOTION:  # Mouse movement
-        print(f"Mouse moved to {pygame.mouse.get_pos()}")
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Check if the click is within a UI bar
+        region = get_ui_bar_region(mouse_pos, window_width, window_height)
+        if region:
+            print(f"Mouse clicked in {region} bar at {mouse_pos}")
+
+            # Check for button intersections
+            for button_name, button in buttons.items():
+                button_rect = pygame.Rect(button['origin'][0], button['origin'][1], button['width'], button['height'])
+                if button_rect.collidepoint(mouse_pos):
+                    print(f"Button '{button_name}' clicked!")
+                    if button['callback']:
+                        button['callback']()  # Call the button's callback function
+                    return
+        else:
+            print(f"Mouse clicked outside UI bars at {mouse_pos}")
+
+
+def get_ui_bar_region(mouse_pos, window_width, window_height):
+    """
+    Determines if the mouse click is within a UI bar (top, bottom, left, or right).
+
+    Args:
+        mouse_pos: Tuple (x, y) of the mouse position.
+        window_width: Width of the window.
+        window_height: Height of the window.
+
+    Returns:
+        A string indicating the region ('top', 'bottom', 'left', 'right') or None if not in a UI bar.
+    """
+    x, y = mouse_pos
+
+    if 0 <= y <= UI_topBar_height:  # Top bar
+        return 'top'
+    elif window_height - UI_bottomBar_height <= y <= window_height:  # Bottom bar
+        return 'bottom'
+    elif 0 <= x <= UI_sideBar_left_width:  # Left sidebar
+        return 'left'
+    elif window_width - UI_sideBar_right_width <= x <= window_width:  # Right sidebar
+        return 'right'
+    return None
