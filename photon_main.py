@@ -1,14 +1,18 @@
 # photon_main
 
+#******************************************************************************************************
 # Import Modules **************************************************************************************
 #******************************************************************************************************
 import pygame  						 # you need to install pygame from https://github.com/pygame/pygame
-import p_customizations				 # where all your custom configurations for the UI go
+#import p_customizations				 # where all your custom configurations for the UI go
+import photon_ui as pui # Import the new UI module
 
 
+#******************************************************************************************************
 # interface config variables **************************************************************************
 #******************************************************************************************************
 
+"""
 ## window size, don't change these here, change in p_customizations.py
 pygame_window_width = p_customizations.pygame_window_width
 pygame_window_height = p_customizations.pygame_window_height
@@ -34,46 +38,38 @@ black = (0,0,0)
 pink = (255,200,200)
 
 ## UI bar thickness
-UI_topBar_height = 40
-UI_bottomBar_height = 40
-UI_sideBar_left_width = 120
-UI_sideBar_right_width = 20 
+UI_topBar_height = 24
+UI_bottomBar_height = 24
+UI_sideBar_left_width = 124
+UI_sideBar_right_width = 24 
+"""
 
 
-
-
+#*****************************************************************************************************
 # pygame display *************************************************************************************
 #*****************************************************************************************************
-screen = pygame.display.set_mode((pygame_window_width, pygame_window_height))
-pygame.display.set_caption(p_customizations.program_name)
+screen = pygame.display.set_mode((pui.pygame_window_width, pui.pygame_window_height))
+pygame.display.set_caption(pui.program_name)
 
 
+#*****************************************************************************************************
 # main game loop *************************************************************************************
 #*****************************************************************************************************
 running = True
-while running == True:
+while running:
 	for event in pygame.event.get():    			# gets pygame events like mouse clicks & key press
 		if event.type == pygame.QUIT:				# quits if the exit is clicked
 			running = False
 
-	# DRAW SCREEN
-	## draw background
-	screen.fill(background_color)
 
-	## draw main elements in game area
-	pygame.draw.lines(screen, red, False, [(0,600), (1200,600)], 1)
-	pygame.draw.lines(screen, red, False, [(600,0), (600,1200)], 1)
-	pygame.draw.circle(screen, red, (600,600), 550, 1)
+	# draw UI background 
+	pui.draw_ui_background(screen, pui.pygame_window_width, pui.pygame_window_height)
 
-	## draw interface foreground
-	### interface background bars
-	pygame.draw.rect(screen, UI_background_color, (0, 0, pygame_window_width, UI_topBar_height)) 													#top bar
-	pygame.draw.rect(screen, UI_background_color, (100, pygame_window_height-UI_bottomBar_height, pygame_window_width, UI_bottomBar_height)) 		#bottom bar
-	pygame.draw.rect(screen, UI_background_color, (0, 0, UI_sideBar_left_width, pygame_window_height)) 												#left side bar
-	pygame.draw.rect(screen, UI_background_color, (pygame_window_width-UI_sideBar_right_width, 0, UI_sideBar_left_width, pygame_window_height)) 		#right side bar
+	# Draw foreground elements
+	pui.draw_game_elements(screen)
 
-	### interface buttons
+	# draw UI borders
+	pui.draw_ui_borders(screen, pui.pygame_window_width, pui.pygame_window_height)
 
-
-
-	pygame.display.flip() # redraw pygame window - this must be the last line
+	# redraw the window, this must be the last line
+	pygame.display.flip() 							# redraw pygame window - this must be the last line

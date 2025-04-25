@@ -1,10 +1,10 @@
 # interface config variables **************************************************************************
 #******************************************************************************************************
 
-program_name = 'My Program Name (see p_customizations.py)'
+program_name = 'Photon3 GUI'    # name of the program, used in the window title bar
 
 ## window
-pygame_window_width = 1200
+pygame_window_width = 1800
 pygame_window_height = 1200
 
 """
