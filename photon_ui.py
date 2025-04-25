@@ -115,8 +115,45 @@ def draw_example_button(screen, x, y, width, height, text):
     text_surface = FontButton.render(text, True, (UI_button_text_color))            # Render the text surface
     text_rect = text_surface.get_rect(center=(UI_sideBar_left_width / 2, UI_topBar_height + 10))     # Center the text within the button
 
-
     screen.blit(text_surface, text_rect)                                            # Draw the text
+
+
+def draw_buttons(screen, buttons):
+    """
+    Draws buttons from a dictionary of button attributes.
+
+    Args:
+        screen: The Pygame surface to draw on.
+        buttons: A dictionary of buttons, where each button is a dictionary of attributes.
+    """
+    for button_name, button in buttons.items():
+        # Extract button attributes
+        x, y = button['origin']
+        width = button['width']
+        height = button['height']
+        label = button['label']
+        font = button.get('font') or FontButton  # Default to FontButton if font is None
+        text_align = button.get('textAlign', 'center')  # Default to center alignment
+
+        # Draw button background
+        pygame.draw.rect(screen, UI_button_color, (x, y, width, height))
+
+        # Draw button border
+        pygame.draw.rect(screen, UI_button_border_color, (x, y, width, height), 2)
+
+        # Render the label text
+        text_surface = font.render(label, True, UI_button_text_color)
+        if text_align == 'center':
+            text_rect = text_surface.get_rect(center=(x + width // 2, y + height // 2))
+        elif text_align == 'left':
+            text_rect = text_surface.get_rect(midleft=(x + 5, y + height // 2))  # 5px padding from the left
+        elif text_align == 'right':
+            text_rect = text_surface.get_rect(midright=(x + width - 5, y + height // 2))  # 5px padding from the right
+        else:
+            raise ValueError(f"Invalid text alignment: {text_align}")
+
+        # Draw the label text
+        screen.blit(text_surface, text_rect)
 
 
 def handle_mouse_events(event):
